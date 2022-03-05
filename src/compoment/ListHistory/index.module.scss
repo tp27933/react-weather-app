@@ -1,0 +1,55 @@
+.root {
+  box-sizing: border-box;
+  padding: 10px;
+  overflow-y: auto;
+  max-width: 380px;
+  min-width: 380px;
+  background: #ede8e838;
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(35, 38, 83);
+  }
+}
+
+
+.index {
+  padding-right: 5px;
+}
+
+.search {
+  margin-left: 8px;
+}
+
+.icon {
+  padding: 5px;
+  width: 15px;
+  margin-right: 8px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.search {
+  background: $primary
+}
+
+.city {
+  flex-shrink: 0;
+}
+
+.itemWrap {
+  @include flex-center;
+  justify-content: space-between;
+  font-size: 16px;
+
+  .time {
+    padding-left: 35px;
+    padding-right: 5px;
+  }
+}

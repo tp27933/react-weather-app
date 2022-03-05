@@ -1,0 +1,54 @@
+$primary: #2a64e7;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+// // Small devices (landscape phones, 576px and up)
+// @media (max-width: 576px) {}
+
+// Medium devices (tablets, 768px and up)
+
+@media (max-width: 720px) {
+  .App {
+    &.layout {
+      flex-direction: column;
+    }
+
+    .panel-wrapper {
+      margin: 0;
+
+      .search-bar {
+        justify-content: center;
+      }
+
+      .current-tmp {
+        display: none;
+      }
+    }
+
+    .history-list {
+      min-width: 100%;
+      flex: 1;
+    }
+  }
+
+}
+
+
+
+// // Large devices (desktops, 992px and up)
+// @media (max-width: 992px) {}
+
+// // X-Large devices (large desktops, 1200px and up)
+// @media (max-width: 1200px) {}

@@ -1,0 +1,40 @@
+.root {
+  @include flex-center;
+  flex-direction: column;
+  flex: 1;
+  padding: 15px;
+}
+
+.name {
+  padding-bottom: 15px;
+}
+
+.currentTmp {
+  padding-bottom: 5px;
+  margin-bottom: 25px;
+  font-size: 68px;
+  border-bottom: 2px dashed #050423;
+}
+
+.iconStyle {
+  width: 50px;
+  height: 50px;
+}
+
+.info {
+  color: #050423;
+  font-size: 14px;
+}
+
+.status {
+  display: flex;
+  padding: 5px 0;
+  font-size: 38px;
+  font-weight: 900;
+}
+
+.label {
+  display: inline-block;
+  width: 138px;
+  text-align: left;
+}
