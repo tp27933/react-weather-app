@@ -5,10 +5,7 @@ import ListHistory from './compoment/ListHistory'
 import PanelInfo from './compoment/PanelInfo'
 import SearchBar from './compoment/SearchBar'
 import ViewError from './compoment/Error'
-/* TODO
-  4. err 提示
-  路徑提示
-*/
+
 function useDidMountEffect(func, deps) {
   const didMount = useRef(false);
   useEffect(() => {
