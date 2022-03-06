@@ -3,6 +3,13 @@ import styles from './index.module.scss'
 import { formatTime } from '../../utils'
 import searchIcon from '../../assets/search.svg'
 import trashIcon from '../../assets/trash.svg'
+/**
+* @description the component of history list
+* @param {array} list -history list.
+* @param {function} onCheck - the function that called when press search icon.
+* @param {function} onDelet - the function that called when press trash icon.
+*/
+
 
 function ListHistory({ list, onCheck, onDelet }) {
   const { icon, itemWrap, index, search, city, time } = styles

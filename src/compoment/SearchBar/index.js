@@ -1,12 +1,16 @@
 import React, { useRef, useState } from 'react'
 import styles from './index.module.scss'
 
-function SearchBar(props) {
-  const { onSearch } = props,
-    [inputVal, setInput] = useState({
-      city: '',
-      country: ''
-    })
+/**
+* @description the component of search bar component
+* @param {function} onSearch - the function that called when press search button.
+*/
+
+function SearchBar({ onSearch }) {
+  const [inputVal, setInput] = useState({
+    city: '',
+    country: ''
+  })
   const onClick = (e) => {
     const { city, country } = inputVal
     const cityVal = city.trim()

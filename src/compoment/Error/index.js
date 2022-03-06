@@ -1,21 +1,28 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect } from 'react'
 import styles from './index.module.scss'
-function ViewError({ text, visible, setText, setInVisible }) {
+/**
+* @description the component of  error prompt
+* @param {string} text - error text.
+* @param {boolean} visible - componmnet visible status.
+* @param {function} setText - set error text.
+* @param {function} setIsVisible - set visible status.
+*/
+
+function ViewError({ text, visible, setText, setIsVisible }) {
   useEffect(
     () => {
       if (text.length === 0) return
-      setInVisible(true)
+      setIsVisible(true)
       const timeout = setTimeout(() => {
         setText('')
-        setInVisible(false)
+        setIsVisible(false)
       }, 5 * 1000);
-
       // this will clear Timeout
       // when component unmount like in willComponentUnmount
       // and show will not change to true
       return () => {
         setText('')
-        setInVisible(false)
+        setIsVisible(false)
         clearTimeout(timeout);
       }
     },

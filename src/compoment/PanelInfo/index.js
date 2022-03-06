@@ -1,6 +1,13 @@
 import React from 'react'
 import { formatTime, swithTemp } from '../../utils'
 import styles from './index.module.scss'
+
+/**
+* @description the component of panel that displays info users search for
+* @param {object} weather - weather info.
+* @param {unit} visible - current unit of measurment.
+*/
+
 function PanelInfo({ weather, unit }) {
   const {
     main,

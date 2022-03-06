@@ -106,7 +106,7 @@ function App() {
       'error': <ViewError text={errorText}
         setText={setErrorText}
         visible={visible}
-        setInVisible={clearErrorText} />
+        setIsVisible={clearErrorText} />
     }
     return (
       <Render if={status === status}>
