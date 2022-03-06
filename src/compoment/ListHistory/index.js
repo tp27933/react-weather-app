@@ -13,10 +13,10 @@ function ListHistory({ list, onCheck, onDelet }) {
       <ul >
         {
           list.map((history, idx) => (
-            <li key={`history-${idx}`} className={itemWrap}>
+            <li key={`history-${idx}`} className={itemWrap} data-label={idx + 1}>
               <div className={city}>
-                <span className={index}>{idx + 1}. </span>
-                {history.city}, {history.country}
+                {/* {idx + 1}. */}
+                <span className={index}>{history.city}, {history.country}</span>
               </div>
               <div className={itemWrap}>
                 <span className={time}>{formatTime(history.time)}</span>
@@ -34,7 +34,6 @@ function ListHistory({ list, onCheck, onDelet }) {
             </li>
           ))
         }
-
       </ul>
     </section>
   )

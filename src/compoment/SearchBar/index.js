@@ -8,15 +8,17 @@ function SearchBar(props) {
       country: ''
     })
   const onClick = (e) => {
-    console.dir(e)
     const { city, country } = inputVal
     const cityVal = city.trim()
     const countryVal = country.trim()
     if (!cityVal) return
+    clearInputs()
     if (!countryVal) return onSearch([cityVal])
+
     return onSearch([cityVal, countryVal])
   }
   const clearInputs = (e) => {
+    console.log('clearInputs')
     setInput(() => ({
       city: '',
       country: ''

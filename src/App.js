@@ -4,8 +4,10 @@ import { GetTodayWeather } from './api'
 import ListHistory from './compoment/ListHistory'
 import PanelInfo from './compoment/PanelInfo'
 import SearchBar from './compoment/SearchBar'
+import ViewError from './compoment/Error'
 /* TODO
   4. err 提示
+  路徑提示
 */
 function useDidMountEffect(func, deps) {
   const didMount = useRef(false);
@@ -34,7 +36,9 @@ function App() {
     [unit, setUnit] = useState('C'),
     [historyList, setHistorylist] = useState([]),
     [status, setStatus] = useState('empty'),
-    isMounted = useRef(true);
+    isMounted = useRef(true)
+
+  // 歷史紀錄存至本地端
   useEffect(() => {
     const data = JSON.parse(sessionStorage.getItem('weatherData') || '[]')
     setHistorylist((historyList) => data)
@@ -42,6 +46,7 @@ function App() {
   useDidMountEffect(() => {
     sessionStorage.setItem('weatherData', JSON.stringify(historyList))
   }, [historyList])
+
   const filterData = useCallback((data) => {
     const { name, main, weather, sys } = data
     const newData = {
@@ -71,12 +76,14 @@ function App() {
     setStatus('loading')
     GetTodayWeather(param)
       .then(res => {
+        console.log(res)
         filterData(res.data)
       }).catch(err => {
-        console.log(err)
+        const data = err.response.data
         setStatus('error')
+        setErrorText(data.message)
       })
-  }, [weather])
+  }, [])
 
   const deletLocalStorage = (item) => {
     setHistorylist(history => history.filter(h => h.time != item.time))
@@ -89,18 +96,27 @@ function App() {
     if (!item.country) return onSearch([item.city])
     return onSearch([item.city, item.country])
   }
+  const [visible, setVisible] = useState(false)
+  const [errorText, setErrorText] = useState('')
   const RenderPanel = () => {
     const componmnet = {
       'empty': <div className='empty'>Today's Weather</div>,
       'loading': <div className='empty'><span className='loading' /></div>,
-      'success': <PanelInfo weather={weather} unit={unit} />
+      'success': <PanelInfo weather={weather} unit={unit} />,
+      'error': <ViewError text={errorText}
+        setText={setErrorText}
+        visible={visible}
+        setInVisible={clearErrorText} />
     }
-
     return (
       <Render if={status === status}>
+        {/* {componmnet[status]} */}
         {componmnet[status]}
       </Render>
     )
+  }
+  const clearErrorText = (status) => {
+    setVisible(status)
   }
   return (
     <div className="App container layout">
@@ -122,7 +138,6 @@ function App() {
         onCheck={onCheck}
         onDelet={deletLocalStorage}
       />
-
     </div>
   );
 }

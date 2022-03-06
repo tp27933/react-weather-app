@@ -39,14 +39,19 @@
   background: $primary
 }
 
-.city {
-  flex-shrink: 0;
+
+li[data-label]:before {
+  content: attr(data-label)".";
+  position: absolute;
+  left: 10px;
 }
 
 .itemWrap {
   @include flex-center;
   justify-content: space-between;
+  padding-left: 22px;
   font-size: 16px;
+  flex-shrink: 0;
 
   .time {
     padding-left: 35px;
