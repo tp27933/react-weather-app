@@ -32,8 +32,7 @@ function App() {
   }),
     [unit, setUnit] = useState('C'),
     [historyList, setHistorylist] = useState([]),
-    [status, setStatus] = useState('empty'),
-    isMounted = useRef(true)
+    [status, setStatus] = useState('empty')
 
   // 歷史紀錄存至本地端
   useEffect(() => {
@@ -68,7 +67,7 @@ function App() {
   useDidMountEffect(() => {
     setHistorylist((historyList) => [...historyList, weather])
   }, [weather])
-  const onSearch = useCallback((arr) => {
+  const onSearch = (arr) => {
     const param = arr.join(',')
     setStatus('loading')
     GetTodayWeather(param)
@@ -80,10 +79,10 @@ function App() {
         setStatus('error')
         setErrorText(data.message)
       })
-  }, [])
+  }
 
   const deletLocalStorage = (item) => {
-    setHistorylist(history => history.filter(h => h.time != item.time))
+    setHistorylist(history => history.filter(h => h.time !== item.time))
   }
   const handleSwitch = (el) => {
     const val = el.target.name
@@ -106,7 +105,7 @@ function App() {
         setIsVisible={clearErrorText} />
     }
     return (
-      <Render if={status === status}>
+      <Render if={status}>
         {/* {componmnet[status]} */}
         {componmnet[status]}
       </Render>

@@ -16,7 +16,7 @@ function ViewError({ text, visible, setText, setIsVisible }) {
       const timeout = setTimeout(() => {
         setText('')
         setIsVisible(false)
-      }, 5 * 1000);
+      }, 3 * 1000);
       // this will clear Timeout
       // when component unmount like in willComponentUnmount
       // and show will not change to true
@@ -26,11 +26,6 @@ function ViewError({ text, visible, setText, setIsVisible }) {
         clearTimeout(timeout);
       }
     },
-    // useEffect will run only one time with empty []
-    // if you pass a value to array,
-    // like this - [data]
-    // than clearTimeout will run every time
-    // this value changes (useEffect re-run)
     [text]
   )
   return (
